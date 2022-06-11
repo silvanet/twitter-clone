@@ -6,6 +6,7 @@ import Tweets from 'components/Tweets'
 import prisma from 'lib/prisma'
 import { getTweets } from 'lib/data.js'
 import LoadMore from 'components/LoadMore'
+import Link from 'next/link'
 
 export default function Home({ initialTweets}) {
   const [tweets, setTweets] = useState(initialTweets)
@@ -31,12 +32,14 @@ export default function Home({ initialTweets}) {
       <NewTweet />
       <Tweets tweets={tweets} />
       <LoadMore tweets={tweets} setTweets={setTweets} />
-      <a
-          className='border px-8 py-2 mt-5 font-bold rounded-full color-accent-contrast bg-color-accent hover:bg-color-accent-hover-darker'
-          href='/api/auth/signout'
-        >
-          Bye for now
-        </a>
+      <Link href='/api/auth/signout'>
+        <a
+            className='border px-8 py-2 mt-5 font-bold rounded-full color-accent-contrast bg-color-accent hover:bg-color-accent-hover-darker'
+            
+          >
+            Bye for now
+          </a>
+        </Link>
     </>
   )
 }
