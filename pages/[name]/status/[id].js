@@ -10,10 +10,15 @@ export default function SingleTweet({ tweet, replies }) {
   const { data: session, status } = useSession()
   const router = useRouter()
 
+  if (typeof window !== 'undefined' && tweet.parent) {
+    router.push(`/${tweet.parent_data.author.name}/status/${tweet.parent}`)
+  }  
+
   return (
     <div>
       <Tweet tweet={tweet} />
       <NewReply tweet={tweet} />
+
       {session && session.user.email === tweet.author.email && (
         <div className='flex-1 py-2 m-2 text-center'>
           <a
