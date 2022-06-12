@@ -30,7 +30,7 @@ const Tweet = ({ tweet, nolink }) => {
               </Link>  
               <span className='pl-1 text-sm font-light leading-5 color-dimmed'>
                 {nolink ? (
-                  <span>{timeago.format(new Date(tweet.createdAt))}</span>
+                  <span>{timeago.format(new Date(tweet.createdAt), 'twitter-now')}</span>
                 ) : (
                   <Link href={`/${tweet.author.name}/status/${tweet.id}`}>
                     <a className='hover:underline'>
