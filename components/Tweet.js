@@ -34,7 +34,7 @@ const Tweet = ({ tweet, nolink }) => {
                 ) : (
                   <Link href={`/${tweet.author.name}/status/${tweet.id}`}>
                     <a className='hover:underline'>
-                      {timeago.format(new Date(tweet.createdAt))}
+                      {timeago.format(new Date(tweet.createdAt), 'twitter-now')}
                     </a>  
                   </Link>
                 )}
